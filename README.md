@@ -2,6 +2,8 @@
 
 A week/day calendar inspired by a well-known web calendar app, built with React, TypeScript and Vite. Items live in client state only (no backend).
 
+**Live demo:** https://week-calendar-rho.vercel.app/
+
 ## Features
 
 - **Week and day views**, switchable from the toolbar

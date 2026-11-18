@@ -10,8 +10,7 @@ The goal is a faithful, testable reimplementation: every behavior below has an o
 
 ## Reference material
 
-- `reference/recording.mp4`: screen recording of the reference app
-- `reference/screenshots/`: key frames (week view, day view, create modal, overlapping events)
+- `reference/screenshots/videoReference.mov`: screen recording of the reference app (week view, day view, create modal, overlapping events)
 
 ## Scope
 
@@ -72,7 +71,7 @@ Anything not observed in the recording, for example: month view, recurring event
 
 ### B7: Overlap
 
-Reference: `reference/screenshots/overlap.png` ("Lunch" 1 – 2pm and "(Sin título)" 1 – 1:45pm on the same day).
+Reference: the overlapping events in `reference/screenshots/videoReference.mov` ("Lunch" 1 – 2pm and "(Sin título)" 1 – 1:45pm on the same day).
 
 - **B7.1** When two items overlap in time on the same day, both remain visible and clickable.
 - **B7.2** The item that goes first is drawn behind, aligned to the left edge of the day column. In the reference, both items start at 1pm and the longer one ("Lunch", 1 hour) is the one behind.
