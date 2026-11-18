@@ -13,13 +13,13 @@ Any implementation that honors this contract can pass them. Fixed clock: **Wed 2
 | `title` / `time-range` | Inside an item | Empty title renders `(Sin título)`; range like `9 – 9:30am`, `1 – 2pm` (en dash) |
 | `resize-handle` | Inside an item, at the bottom edge | |
 | `create-modal`, `title-input`, `type-select` (native `<select>`), `save-button`, `close-modal` | Create / edit modal | Same modal is reused for edit |
-| `popup`, `popup-edit`, `popup-delete` | Item detail popup | `Escape` closes it |
+| `popup`, `popup-title`, `popup-delete` | Item detail popup | `Escape` closes it |
 
 Visual rules checked by computed style: overlap z-index (top item higher), top item has a white `outline` or `border`,
 top item's left edge ≈ 40–60 % across the column.
 
-## Assumptions to confirm (open questions in `task.md`)
+## Resolved assumptions
 
-- **Q3**: edit is opened through a `popup-edit` button in the popup.
+- Editing is opened by clicking `popup-title` (Q3).
+- Moving and resizing snap to 15 minutes (Q1); overlap layout follows B7 for any start times (Q2); each type has its own color (Q4).
 - **B1.2**: the "selected day" in day view is today.
-- **Q1 / Q2** are `test.fixme` until answered from the recording.
