@@ -1,4 +1,4 @@
-# Calendar
+# Week Calendar
 
 Spec: [task.md](task.md). Test contract: [tests/README.md](tests/README.md).
 
