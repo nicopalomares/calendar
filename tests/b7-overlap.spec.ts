@@ -90,8 +90,7 @@ test.describe('B7: Overlap', () => {
     expect(await hit(l.x + l.width * 0.75, l.y + l.height - 4)).toBe(lunchId);
   });
 
-  // Q2: unverified against the recording — enable once answered.
-  test.fixme('Q2 overlap with different start times (1pm and 1:30pm)', async ({ page }) => {
+  test('B7.6 overlap with different start times (1pm and 1:30pm)', async ({ page }) => {
     const first = await createItem(page, { day: DAYS.sun, time: '13:00', title: 'First', durationMin: 60 });
     const second = await createItem(page, { day: DAYS.sun, time: '16:00', title: 'Second' });
     await moveItem(page, second, DAYS.sun, '13:30');

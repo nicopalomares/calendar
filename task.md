@@ -52,14 +52,16 @@ Anything not observed in the recording, for example: month view, recurring event
 
 ### B4: Edit
 
-- **B4.1** Clicking an existing item opens its detail popup. Editing from there shows the current title and type pre-filled.
+- **B4.1** Clicking an existing item opens its detail popup. Clicking the title in the popup opens editing, which shows the current title and type pre-filled.
 - **B4.2** Changing the title and saving updates the item in place. Its day, start time and duration do not change.
+- **B4.3** Event, Task and Appointment schedule items are drawn in three different colors.
 
 ### B5: Move
 
 - **B5.1** Dragging an item from Sunday 09:00 to Tuesday 14:00 places it on Tuesday starting at 14:00.
 - **B5.2** The item keeps its original duration after moving.
 - **B5.3** No other item changes position as a result of the move (unless the layout rule in B7 applies).
+- **B5.4** Moving snaps to 15-minute steps: releasing between two steps sets the start to the nearest quarter hour.
 
 ### B6: Resize
 
@@ -95,11 +97,9 @@ npx playwright test
 
 A task is considered complete only when every test passes against the fixed clock.
 
-## Open questions (to confirm against the recording)
+## Resolved questions
 
-- **Q1. Move snapping:** resizing snaps to 15 minutes. Does dragging an item to another time snap to the same step?
-- **Q2. Overlap with different start times:** the reference screenshot shows two items starting at the same time. Confirm the layout when one starts later than the other (for example 1pm and 1:30pm).
-- **Q3. Editing:** from the detail popup, how is editing opened (an edit icon, or clicking the title)?
-- **Q4. Type differences:** do Event, Task and Appointment schedule look or behave differently once created (color, icon, fields)?
-
-Until each question is answered from the recording, the related criterion stays marked as unverified.
+- **Q1. Move snapping:** dragging an item to another time snaps to 15-minute steps, same as resizing. (Verified: B5.4)
+- **Q2. Overlap with different start times:** same rule as B7. The item that starts first is drawn behind, aligned left; the one that starts later is drawn on top, shifted right. (Verified by B7)
+- **Q3. Editing:** in the detail popup, editing is opened by clicking the title (there is no separate edit icon). (Verified: B4.1)
+- **Q4. Type differences:** Event, Task and Appointment schedule each have a distinct color. (Verified: B4.3)

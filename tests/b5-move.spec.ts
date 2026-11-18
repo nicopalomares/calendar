@@ -21,6 +21,19 @@ test.describe('B5: Move', () => {
     expect(await endOf(item)).toBe(`${DAYS.tue}T15:30`);
   });
 
+  test('B5.4 moving snaps to 15-minute steps', async ({ page }) => {
+    const item = await createItem(page, { day: DAYS.sun, time: '09:00', title: 'Snap' });
+    const box = (await item.boundingBox())!;
+    const hourH = (await page.getByTestId(`slot-${DAYS.sun}-00:00`).boundingBox())!.height;
+    const x = box.x + box.width / 4;
+    const y = box.y + 6;
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x, y + hourH * 0.4, { steps: 8 }); // +24 min → nearest step is +30
+    await page.mouse.up();
+    expect(await startOf(item)).toBe(`${DAYS.sun}T09:30`);
+  });
+
   test('B5.3 no other item changes position as a result of the move', async ({ page }) => {
     const a = await createItem(page, { day: DAYS.sun, time: '09:00', title: 'A' });
     const b = await createItem(page, { day: DAYS.wed, time: '11:00', title: 'B' });
@@ -35,8 +48,7 @@ test.describe('B5: Move', () => {
     expect(await b.boundingBox()).toEqual(boxB);
   });
 
-  // Q1: unverified against the recording — enable once answered.
-  test.fixme('Q1 moving snaps to 15-minute steps', async ({ page }) => {
+  test('B5.4b moving to 10:40 snaps to 10:45', async ({ page }) => {
     const item = await createItem(page, { day: DAYS.sun, time: '09:00', title: 'Snap' });
     await moveItem(page, item, DAYS.sun, '10:40');
     expect(await startOf(item)).toBe(`${DAYS.sun}T10:45`);
